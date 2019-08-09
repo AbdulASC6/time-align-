@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Time Align</title>
+    <link rel="stylesheet" type="text/css" href="task.css">
+    <script src="task.js" defer></script>
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/6.3.5/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.3.5/firebase-database.js"></script>
+
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+         https://firebase.google.com/docs/web/setup#config-web-app -->
+
+    <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyA0SH5_A82k0F-IOW59Uaw-yxynFHzrmdg",
+            authDomain: "time-align.firebaseapp.com",
+            databaseURL: "https://time-align.firebaseio.com",
+            projectId: "time-align",
+            storageBucket: "time-align.appspot.com",
+            messagingSenderId: "707076326726",
+            appId: "1:707076326726:web:85358a2a391010a0"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+    </script>
+</head>
+
+<body>
+    <div class="navbg">
+        <ul class="list">
+            <li><a href="task.html">Today</a></li>
+            <li><a href="../week.html">Week</a></li>
+            <li><a href="../stat/stat.html">Weekly Summary</a></li>
+            <li><a href="../notes/notes.html">Notes</a></li>
+            <!-- <li><a href="index.html">Sign Out</a><li> -->
+            <!-- <div class="dropdown"> -->
+            <!-- <li class="content2"><button class="dropbtn">Content</button></li>
+            <div class="dropdown-content dropdown">
+                <a href="">
+                    <p></p>
+                </a>
+                <a href="">
+                    <p></p>
+                </a>
+            </div> -->
+        <!-- </div> -->
+        </ul>
+    </div>
+    <div class="userContainer">
+        <form>
+            <div class="inputContainer">
+                <div class="singleInput">
+                    <label for="username">Username:</label>
+                    <input id="username" type="text">
+                </div>
+                <div class="singleInput">
+                    <label for="task">Task:</label>
+                    <input id="task" type="text">
+                </div>
+                <div class="singleInput">
+                    <label for="time">Time:</label>
+                    <input id="time" type="text">
+                </div>
+                <div class="singleInput">
+                    <label for="day">Day:</label>
+                    <input id="day" type="text">
+                </div>
+            </div>
+            <button id="submitButton">Submit</button>
+        </form>
+    </div>
+</body>
+
+</html>
