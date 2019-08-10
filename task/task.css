@@ -30,3 +30,13 @@ ul {
 .Contain{
     margin: 3%;
 }
+.newUnit{
+    display: flex;
+    justify-content: center;
+    outline-style: solid;
+}
+.new{
+    color: blue;
+    display: inline;
+    margin-right: 1%;
+}
