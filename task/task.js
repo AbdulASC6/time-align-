@@ -9,16 +9,19 @@ let postTime = new Date();
 let menu = false
 let count = 0
 let arr = []
+let contain = []
 
 inputContain.style.display = "none"
 submitTaskB.style.display = "none"
 addTaskB.innerText = "+"
 
-if (!menu) addTaskB.addEventListener("click", addTaskMenu); 
+//Add Task Button Opening and closing task menu//
+if (!menu) addTaskB.addEventListener("click", addTaskMenu);
 if (menu) {
     addTaskB.addEventListener("click", subTaskMenu);
     console.log("bruh")
 }
+
 
 submitTaskB.addEventListener("click", updateDB);
 console.log(menu)
@@ -32,7 +35,7 @@ function addTaskMenu(event) {
 }
 
 function subTaskMenu(event) {
-    //event.preventDefault();
+    // event.preventDefault();
     inputContain.style.display = "none";
     submitTaskB.style.display = "none";
     addTaskB.innerText = "+";
@@ -57,9 +60,12 @@ function updateDB(event) {
         DAY: day,
         POSTTIME: postTime
     }
+    //Want to make each task unit a part of an array. Need help.//
+    contain.push(value);
+    console.log(count)
     arr.push(count)
     count += 1
-    
+
     console.log(value);
     database.push(value)
     subTaskMenu();
@@ -75,23 +81,63 @@ function addTask(data) {
     const day = unit.DAY;
 
 
-    let newUnit = document.createElement("div");
-    let newTask = document.createElement("p");
-    let newTime = document.createElement("p");
-    let newDay = document.createElement("p");
+    let tempNewUnit = document.createElement("div");
+    let tempNewTask = document.createElement("p");
+    let tempNewTime = document.createElement("p");
+    let tempNewDay = document.createElement("p");
+    let tempEditButton = document.createElement("button");
 
-    newTask.innerText = task;
-    newTime.innerText = time;
-    newDay.innerText = day;
+    tempNewTask.innerText = task;
+    tempNewTime.innerText = time;
+    tempNewDay.innerText = day;
+    tempEditButton.innerText = "..."
 
-    taskContain.appendChild(newUnit);
-    newUnit.appendChild(newTask);
-    newUnit.appendChild(newTime);
-    newUnit.appendChild(newDay);
+    taskContain.appendChild(tempNewUnit);
+    tempNewUnit.appendChild(tempNewTask);
+    tempNewUnit.appendChild(tempNewTime);
+    tempNewUnit.appendChild(tempNewDay);
+    tempNewUnit.appendChild(tempEditButton);
 
-    newUnit.className = "newUnit";
-    newTask.className = "newTask new";
-    newTime.className = "newTime new";
-    newDay.className = "newDay new";
+    tempNewUnit.className = "newUnit";
+    tempNewTask.className = "newTask new";
+    tempNewTime.className = "newTime new";
+    tempNewDay.className = "newDay new";
+    tempEditButton.className = "editTask new";
+
+
+    const editButton = document.getElementsByClassName("editTask");
+    for (i = 0; i < editButton.length; i ++){
+        editButton[i].addEventListener("click", changeTask);
+    }
+
+    function changeTask() {
+        console.log("bruh")
+        let editInputContain = document.createElement("div");
+        let editTaskContain = document.createElement("div");
+        let editTaskLabel = document.createElement("label");
+        let editTaskInput = document.createElement("input");
+        let editTimeContain = document.createElement("div");
+        let editTimeLabel = document.createElement("label");
+        let editTimeInput = document.createElement("input");
+        let editDayContain = document.createElement("div");
+        let editDayLabel = document.createElement("label");
+        let editDayInput = document.createElement("input");
+
+        editTaskContain.appendChild(editTaskLabel);
+        editTaskContain.appendChild(editTaskInput);
+        editInputContain.appendChild(editTaskContain);
+        
+        editTimeContain.appendChild(editTimeLabel);
+        editTimeContain.appendChild(editTimeInput);
+        editInputContain.appendChild(editTimeContain);
+
+        editDayContain.appendChild(editDayLabel);
+        editDayContain.appendChild(editDayInput);
+        editInputContain.appendChild(editDayContain);
+
+        tempNewUnit.appendChild(editInputContain)
+
+        // editTaskInput.innerText = 
+    }
 
 }
