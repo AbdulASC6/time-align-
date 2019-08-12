@@ -9,7 +9,7 @@ let postTime = new Date();
 let menu = false
 let count = 0
 let arr = []
-let contain = []
+let contain = [];
 
 inputContain.style.display = "none"
 submitTaskB.style.display = "none"
@@ -19,19 +19,16 @@ addTaskB.innerText = "+"
 if (!menu) addTaskB.addEventListener("click", addTaskMenu);
 if (menu) {
     addTaskB.addEventListener("click", subTaskMenu);
-    console.log("bruh")
 }
 
 
 submitTaskB.addEventListener("click", updateDB);
-console.log(menu)
 function addTaskMenu(event) {
     event.preventDefault();
     inputContain.style.display = "inline";
     submitTaskB.style.display = "block";
     addTaskB.innerText = "-";
     menu = true;
-    console.log(menu);
 }
 
 function subTaskMenu(event) {
@@ -40,7 +37,6 @@ function subTaskMenu(event) {
     submitTaskB.style.display = "none";
     addTaskB.innerText = "+";
     menu = false;
-    console.log(menu);
 }
 
 function updateDB(event) {
@@ -62,12 +58,10 @@ function updateDB(event) {
     }
     //Want to make each task unit a part of an array. Need help.//
     contain.push(value);
-    console.log(count)
     arr.push(count)
     count += 1
 
-    console.log(value);
-    database.push(value)
+    database.push(value);
     subTaskMenu();
 }
 
@@ -106,12 +100,11 @@ function addTask(data) {
 
 
     const editButton = document.getElementsByClassName("editTask");
-    for (i = 0; i < editButton.length; i ++){
+    for (i = 0; i < editButton.length; i++){
         editButton[i].addEventListener("click", changeTask);
     }
 
     function changeTask() {
-        console.log("bruh")
         let editInputContain = document.createElement("div");
         let editTaskContain = document.createElement("div");
         let editTaskLabel = document.createElement("label");
@@ -122,6 +115,11 @@ function addTask(data) {
         let editDayContain = document.createElement("div");
         let editDayLabel = document.createElement("label");
         let editDayInput = document.createElement("input");
+        let submitEdit = document.createElement("button");
+        let deleteEdit = document.createElement("button");
+
+        submitEdit.innerText = "submit";
+        deleteEdit.innerText = "X";
 
         editTaskContain.appendChild(editTaskLabel);
         editTaskContain.appendChild(editTaskInput);
@@ -135,7 +133,29 @@ function addTask(data) {
         editDayContain.appendChild(editDayInput);
         editInputContain.appendChild(editDayContain);
 
-        tempNewUnit.appendChild(editInputContain)
+        tempNewUnit.appendChild(editInputContain);
+        tempNewUnit.appendChild(submitEdit);
+        tempNewUnit.appendChild(deleteEdit)
+
+        submitEdit.addEventListener("click", changeDB);
+        submitEdit.addEventListener("click", deleteDB);
+        
+        function changeDB() {
+            const id = data.key;
+            const obj = {
+                TASK: editTaskInput.value,
+                TIME: editTimeInput.value,
+                DAY: editDayInput.value
+            }
+
+            console.log(obj)
+            firebase.database().ref(id).set(obj);
+            location.reload();
+        }
+
+        function deleteDB() {
+            
+        }
 
         // editTaskInput.innerText = 
     }

@@ -1,8 +1,50 @@
- h1{
+ h1 {
      text-align: center;
      font-size: 100px;
  }
- h4{
+ h4 {
      text-align: center;
      font-size: 30px;
+     color: #19647E;
+     margin-top: 0px;
  }
+ div {
+    color: #55D6BE;
+    text-align: center;
+ }
+
+h1 {
+    display: inline;
+}
+.align {
+    color: #19647E;
+}
+img{
+    width: 125px;
+    height: 125px;
+}
+.start {
+    background: #55D6BE;
+    color: white;
+    border-radius: 7px;
+    font-size: 20px;
+    width: 125px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-left: 1125px;
+    font-family: 'Nunito', sans-serif;
+}
+body {
+    font-family: 'Nunito', sans-serif;
+    text-align: center;
+}
+a {
+    text-decoration: none;
+}
+.description {
+    width: 750px;
+}
+.desc {
+    display: flex;
+    justify-content: center;
+}
