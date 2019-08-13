@@ -10,6 +10,8 @@ let menu = false
 let count = 0
 let arr = []
 let contain = [];
+let timeArr = [];
+let tc = 0
 
 inputContain.style.display = "none"
 submitTaskB.style.display = "none"
@@ -62,7 +64,7 @@ function updateDB(event) {
         DAY: day,
         POSTTIME: postTime
     }
-    //Want to make each task unit a part of an array. Need help.//
+
     contain.push(value);
     arr.push(count)
     count += 1
@@ -89,11 +91,15 @@ function addTask(data) {
     tempNewTask.innerText = task;
     tempNewTime.innerText = time;
     tempNewDay.innerText = day;
-    tempEditButton.innerText = "..."
+    tempEditButton.innerText = "Edit Time";
+
+    startButton.className = "startButton";
+    pauseButton.className = "pauseButton";
 
     tempNewUnit.appendChild(tempNewTask);
     tempNewUnit.appendChild(tempNewTime);
     tempNewUnit.appendChild(tempNewDay);
+    const timer1 = new AlignTimer(tc, 'test', tempNewUnit);
     tempNewUnit.appendChild(tempEditButton);
     taskContain.appendChild(tempNewUnit);
 
@@ -102,8 +108,6 @@ function addTask(data) {
     tempNewTime.className = "newTime new";
     tempNewDay.className = "newDay new";
     tempEditButton.className = "editTask new";
-
-    timer();
 
     const editButton = document.getElementsByClassName("editTask");
     editButton[editButton.length - 1].addEventListener("click", function (event) {
@@ -163,32 +167,4 @@ function changeDB(data, obj) {
     console.log(obj)
     firebase.database().ref(id).set(obj);
     location.reload();
-}
-
-
-
-// timer
-function timer() {
-    let timer = new easytimer.Timer();
-    $('#chronoExample .startButton').click(function () {
-        timer.start();
-    });
-    $('#chronoExample .pauseButton').click(function () {
-        timer.pause();
-    });
-    $('#chronoExample .stopButton').click(function () {
-        timer.stop();
-    });
-    $('#chronoExample .resetButton').click(function () {
-        timer.reset();
-    });
-    timer.addEventListener('secondsUpdated', function (e) {
-        $('#chronoExample .values').html(timer.getTimeValues().toString());
-    });
-    timer.addEventListener('started', function (e) {
-        $('#chronoExample .values').html(timer.getTimeValues().toString());
-    });
-    timer.addEventListener('reset', function (e) {
-        $('#chronoExample .values').html(timer.getTimeValues().toString());
-    });
 }

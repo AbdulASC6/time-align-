@@ -1,0 +1,32 @@
+.list{
+    font-size: 20px;
+    background-color: rgb(77, 205, 181);
+    text-decoration: none; 
+    word-spacing: 10px;
+ }
+ li{
+    display: inline; 
+ }
+ a{
+    color: white;
+    text-decoration: none; 
+ }
+ img{
+     width: 30px;
+     height: 30px;
+     text-align: left;
+     /* position: absolute; */
+ }
+ .navbg {
+     width: 100%;
+     margin: 0;
+     font-family: 'Nunito', sans-serif;
+ }
+
+ body {
+        margin: 0;
+    }
+ ul {
+        margin: 0;
+        height: 40px;
+    }

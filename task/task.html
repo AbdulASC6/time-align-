@@ -12,6 +12,7 @@
   integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8="
   crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css?family=Nunito&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="navbg.css">
     <link rel="stylesheet" type="text/css" href="task.css">
     <script src="task.js" defer></script>
     <!-- The core Firebase JS SDK is always required and must be listed first -->
@@ -36,6 +37,9 @@
         // Initialize Firebase
         firebase.initializeApp(firebaseConfig);
     </script>
+
+    <!-- Timer Class, Author: Garrett Burroughs -->
+    <script src="alignTimer.js"></script>
 </head>
 
 <body>
@@ -48,10 +52,11 @@
             <li><a href="../notes/notes.html">Notes</a></li>
         </ul>
     </div>
+
     <div>
         <h1 class = "title">Tasks</h1>
     </div>
-        <button class = "taskButton">bruh</button>
+        <button class = "taskButton">+</button>
     <div class="userContainer Contain">
         <form>
             <div class="inputContainer inputStyle">
@@ -75,13 +80,11 @@
 
     </div>
 
-    <div id="chronoExample">
+    <div class="chronoExample">
         <div class="values">00:00:00</div>
         <div>
             <button class="startButton">Start</button>
             <button class="pauseButton" >Pause</button>
-            <button class="stopButton">Stop</button>
-            <button class="resetButton">Reset</button>
         </div>
     </div>
 </body>
