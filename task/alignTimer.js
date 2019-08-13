@@ -15,18 +15,27 @@ class AlignTimer{
 
         const start = document.createElement('button');
         const stop = document.createElement('button');
-        start.innerText = 'start';
-        stop.innerText = 'stop';
-        start.onclick = () => { this.start() };
+        start.innerText = 'Start';
+        stop.innerText = 'Stop';
+        start.className = "timeB";
+        stop.className = "timeB";
+        start.onclick = () => { this.start(idx) };
         stop.onclick = () => { this.pause() };
         this.container.appendChild(start);
         this.container.appendChild(stop);
     }
 
-    start(){
+    start(idx){
         this.timer.start();
+        const database = firebase.database().ref(`/timers/timer${idx}`);
+        const startDate = new Date();
+        console.log(startDate);
+        console.log(database);
+        database.set({
+            'date' : startDate
+        });
     }
-
+ 
     pause(){
         this.timer.pause();
     }

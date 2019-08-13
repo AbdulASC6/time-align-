@@ -1,12 +1,7 @@
-.navbg {
-    position: absolute;
-    width: 110%;
-    height: 7%;
-    z-index:1;
-    margin: 0px,0px,0px,0px;
-    padding-top: 15px;
-    font-size: 20;
-    font-family: 'Lato', sans-serif;
-    top: 0;
-    left: 0;
+
+#container{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 40%; 
 }

@@ -5,10 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Time Align</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.js"></script>
     <link rel="stylesheet" type="text/css" href="stat.css">
     <link rel="stylesheet" type="text/css" href="../task/navbg.css">
     <script src="stat.js" defer></script>
+    <script src="https://www.gstatic.com/firebasejs/6.3.5/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.3.5/firebase-database.js"></script>
 </head>
+<script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyA0SH5_A82k0F-IOW59Uaw-yxynFHzrmdg",
+            authDomain: "time-align.firebaseapp.com",
+            databaseURL: "https://time-align.firebaseio.com",
+            projectId: "time-align",
+            storageBucket: "time-align.appspot.com",
+            messagingSenderId: "707076326726",
+            appId: "1:707076326726:web:85358a2a391010a0"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+    </script>
 <header>
     <div class="navbg">
         <ul class="list">
@@ -17,10 +34,13 @@
             <li><a href="../week/week.html">Week</a></li>
             <li><a href="stat.html"> Summary</a></li>
             <li><a href="../notes/notes.html">Notes</a></li>
-        </ul>
+        </ul>   
     </div>
     
 </header>
 <body>
+        <div id="container" style="height:400px; width:800px">
+                <canvas id="myChart"></canvas>
+            </div>
 </body>
 </html>

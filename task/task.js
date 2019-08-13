@@ -1,4 +1,4 @@
-let database = firebase.database().ref();
+let database = firebase.database().ref('/tasks');
 const inputContain = document.querySelector(".inputContainer");
 const addTaskB = document.querySelector(".taskButton");
 const taskE = document.getElementById("task");
@@ -53,7 +53,6 @@ function updateDB(event) {
     const time = timeE.value;
     const day = dayE.value;
     let postTime = new Date();
-
     taskE.value = "";
     timeE.value = "";
     dayE.value = "";
@@ -62,7 +61,7 @@ function updateDB(event) {
         TASK: task,
         TIME: time,
         DAY: day,
-        POSTTIME: postTime
+        STARTSTOP: [1, 2, 3]
     }
 
     contain.push(value);
@@ -72,7 +71,7 @@ function updateDB(event) {
     database.push(value);
     subTaskMenu();
 }
-
+console.log(database);
 database.on("child_added", addTask);
 let taskContain = document.querySelector(".taskContain")
 
@@ -93,15 +92,12 @@ function addTask(data) {
     tempNewDay.innerText = day;
     tempEditButton.innerText = "Edit Time";
 
-    startButton.className = "startButton";
-    pauseButton.className = "pauseButton";
-
     tempNewUnit.appendChild(tempNewTask);
+    taskContain.prepend(tempNewUnit);
     tempNewUnit.appendChild(tempNewTime);
     tempNewUnit.appendChild(tempNewDay);
     const timer1 = new AlignTimer(tc, 'test', tempNewUnit);
     tempNewUnit.appendChild(tempEditButton);
-    taskContain.appendChild(tempNewUnit);
 
     tempNewUnit.className = "newUnit";
     tempNewTask.className = "newTask new";
@@ -110,7 +106,7 @@ function addTask(data) {
     tempEditButton.className = "editTask new";
 
     const editButton = document.getElementsByClassName("editTask");
-    editButton[editButton.length - 1].addEventListener("click", function (event) {
+    editButton[0 ].addEventListener("click", function (event) {
         changeTask(event, data);
     });
 }
@@ -122,6 +118,7 @@ function changeTask(event, data) {
     let editTaskInput = document.createElement("input");
     let editTimeInput = document.createElement("input");
     let editDayInput = document.createElement("input");
+    editDayInput.setAttribute("type","date"); 
     let submitEdit = document.createElement("button");
     let deleteEdit = document.createElement("button");
 
@@ -149,6 +146,7 @@ function changeTask(event, data) {
             DAY: editDayInput.value
         });
     });
+    console.log("true")
     deleteEdit.addEventListener("click", subEdit);
 }
 
