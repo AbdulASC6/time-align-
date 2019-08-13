@@ -1,6 +1,6 @@
 
 .list{
-   font-size: 30px;
+   font-size: 20px;
    background-color: rgb(77, 205, 181);
    text-decoration: none; 
    word-spacing: 10px;
@@ -13,13 +13,15 @@ a{
    text-decoration: none; 
 }
 img{
-    margin-top: 10px;
     width: 30px;
     height: 30px;
+    text-align: left;
+    /* position: absolute; */
 }
 .navbg {
     width: 100%;
     margin: 0;
+    font-family: 'Nunito', sans-serif;
 }
 body {
     margin: 0;
@@ -27,16 +29,27 @@ body {
 ul {
     margin: 0;
 }
+/* ////////////////////////////////////////////////////////////// */
 .Contain{
     margin: 3%;
 }
 .newUnit{
     display: flex;
     justify-content: center;
-    outline-style: solid;
+    background: rgb(77, 205, 181);
+    border-radius: 25px;
+    height: 50px;
+    margin-bottom: 15px;
 }
 .new {
-    color: blue;
+    color: white;
     display: inline;
     margin-right: 1%;
+}
+.title {
+    text-align:center;
+    font-family: 'Nunito', sans-serif;
+    color: #19647E;
+    font-size: 50px;
+    margin-bottom: 0px;
 }

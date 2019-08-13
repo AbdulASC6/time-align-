@@ -19,20 +19,21 @@ h1 {
 .align {
     color: #19647E;
 }
-img{
-    width: 125px;
-    height: 125px;
+.img{
+    width: 10%;
+    height: 10%;
 }
 .start {
     background: #55D6BE;
-    color: white;
-    border-radius: 7px;
+    border-radius: 15px;
     font-size: 20px;
-    width: 125px;
     padding-top: 5px;
     padding-bottom: 5px;
-    margin-left: 1125px;
+    text-align: center;
     font-family: 'Nunito', sans-serif;
+    padding-right: 5px;
+    padding-left: 5px;
+    margin-top: 0px;
 }
 body {
     font-family: 'Nunito', sans-serif;
@@ -40,11 +41,24 @@ body {
 }
 a {
     text-decoration: none;
+    color: white;
 }
 .description {
     width: 750px;
+    margin-bottom: 10px;
 }
 .desc {
     display: flex;
     justify-content: center;
+}
+.logo1 {
+    margin-top: 30px;
+}
+.start:hover{
+    border-style: solid;
+    border-width: 1px;
+    border-color: #55D6BE;
+    background: white;
+    color: #55D6BE;
+    /* box-shadow : -4px 5px 4px rgba(0,0,0,.8);     */
 }

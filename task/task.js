@@ -21,14 +21,20 @@ if (menu) {
     addTaskB.addEventListener("click", subTaskMenu);
 }
 
-
 submitTaskB.addEventListener("click", updateDB);
 function addTaskMenu(event) {
-    event.preventDefault();
-    inputContain.style.display = "inline";
-    submitTaskB.style.display = "block";
-    addTaskB.innerText = "-";
-    menu = true;
+    if (!menu) {
+        event.preventDefault();
+        inputContain.style.display = "inline";
+        submitTaskB.style.display = "block";
+        addTaskB.innerText = "-";
+        menu = true;
+    } else {
+        inputContain.style.display = "none";
+        submitTaskB.style.display = "none";
+        addTaskB.innerText = "+";
+        menu = false
+    }
 }
 
 function subTaskMenu(event) {
@@ -74,7 +80,6 @@ function addTask(data) {
     const time = unit.TIME;
     const day = unit.DAY;
 
-
     let tempNewUnit = document.createElement("div");
     let tempNewTask = document.createElement("p");
     let tempNewTime = document.createElement("p");
@@ -86,11 +91,11 @@ function addTask(data) {
     tempNewDay.innerText = day;
     tempEditButton.innerText = "..."
 
-    taskContain.appendChild(tempNewUnit);
     tempNewUnit.appendChild(tempNewTask);
     tempNewUnit.appendChild(tempNewTime);
     tempNewUnit.appendChild(tempNewDay);
     tempNewUnit.appendChild(tempEditButton);
+    taskContain.appendChild(tempNewUnit);
 
     tempNewUnit.className = "newUnit";
     tempNewTask.className = "newTask new";
@@ -98,66 +103,92 @@ function addTask(data) {
     tempNewDay.className = "newDay new";
     tempEditButton.className = "editTask new";
 
+    timer();
 
     const editButton = document.getElementsByClassName("editTask");
-    for (i = 0; i < editButton.length; i++){
-        editButton[i].addEventListener("click", changeTask);
-    }
+    editButton[editButton.length - 1].addEventListener("click", function (event) {
+        changeTask(event, data);
+    });
+}
 
-    function changeTask() {
-        let editInputContain = document.createElement("div");
-        let editTaskContain = document.createElement("div");
-        let editTaskLabel = document.createElement("label");
-        let editTaskInput = document.createElement("input");
-        let editTimeContain = document.createElement("div");
-        let editTimeLabel = document.createElement("label");
-        let editTimeInput = document.createElement("input");
-        let editDayContain = document.createElement("div");
-        let editDayLabel = document.createElement("label");
-        let editDayInput = document.createElement("input");
-        let submitEdit = document.createElement("button");
-        let deleteEdit = document.createElement("button");
+function changeTask(event, data) {
+    console.log(event);
+    unitPath = event.path[1];
+    let editInputContain = document.createElement("div");
+    let editTaskInput = document.createElement("input");
+    let editTimeInput = document.createElement("input");
+    let editDayInput = document.createElement("input");
+    let submitEdit = document.createElement("button");
+    let deleteEdit = document.createElement("button");
 
-        submitEdit.innerText = "submit";
-        deleteEdit.innerText = "X";
+    editInputContain.className = "dot3"
+    submitEdit.className = "submitEdit"
+    deleteEdit.className = "deleteEdit"
 
-        editTaskContain.appendChild(editTaskLabel);
-        editTaskContain.appendChild(editTaskInput);
-        editInputContain.appendChild(editTaskContain);
-        
-        editTimeContain.appendChild(editTimeLabel);
-        editTimeContain.appendChild(editTimeInput);
-        editInputContain.appendChild(editTimeContain);
+    submitEdit.innerText = "submit";
+    deleteEdit.innerText = "X";
 
-        editDayContain.appendChild(editDayLabel);
-        editDayContain.appendChild(editDayInput);
-        editInputContain.appendChild(editDayContain);
+    editInputContain.appendChild(editTaskInput);
 
-        tempNewUnit.appendChild(editInputContain);
-        tempNewUnit.appendChild(submitEdit);
-        tempNewUnit.appendChild(deleteEdit)
+    editInputContain.appendChild(editTimeInput);
 
-        submitEdit.addEventListener("click", changeDB);
-        submitEdit.addEventListener("click", deleteDB);
-        
-        function changeDB() {
-            const id = data.key;
-            const obj = {
-                TASK: editTaskInput.value,
-                TIME: editTimeInput.value,
-                DAY: editDayInput.value
-            }
+    editInputContain.appendChild(editDayInput);
 
-            console.log(obj)
-            firebase.database().ref(id).set(obj);
-            location.reload();
-        }
+    unitPath.appendChild(editInputContain);
+    unitPath.appendChild(submitEdit);
+    unitPath.appendChild(deleteEdit);
 
-        function deleteDB() {
-            
-        }
+    submitEdit.addEventListener("click", function (event) {
+        changeDB(data, {
+            TASK: editTaskInput.value,
+            TIME: editTimeInput.value,
+            DAY: editDayInput.value
+        });
+    });
+    deleteEdit.addEventListener("click", subEdit);
+}
 
-        // editTaskInput.innerText = 
-    }
+function subEdit() {
+    unitPath = event.path[1];
+    let editInputContain = unitPath.querySelector(".dot3");
+    let submitEdit = unitPath.querySelector(".submitEdit");
+    let deleteEdit = unitPath.querySelector(".deleteEdit");
+    editInputContain.remove();
+    submitEdit.remove();
+    deleteEdit.remove();
+}
 
+function changeDB(data, obj) {
+    const id = data.key;
+    console.log(obj)
+    firebase.database().ref(id).set(obj);
+    location.reload();
+}
+
+
+
+// timer
+function timer() {
+    let timer = new easytimer.Timer();
+    $('#chronoExample .startButton').click(function () {
+        timer.start();
+    });
+    $('#chronoExample .pauseButton').click(function () {
+        timer.pause();
+    });
+    $('#chronoExample .stopButton').click(function () {
+        timer.stop();
+    });
+    $('#chronoExample .resetButton').click(function () {
+        timer.reset();
+    });
+    timer.addEventListener('secondsUpdated', function (e) {
+        $('#chronoExample .values').html(timer.getTimeValues().toString());
+    });
+    timer.addEventListener('started', function (e) {
+        $('#chronoExample .values').html(timer.getTimeValues().toString());
+    });
+    timer.addEventListener('reset', function (e) {
+        $('#chronoExample .values').html(timer.getTimeValues().toString());
+    });
 }

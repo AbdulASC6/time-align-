@@ -1,0 +1,20 @@
+@media only screen and (max-width:376px){
+    .description {
+        max-width: 345px;
+        font-size: 20px;
+    }
+    .time {
+        font-size: 55px;
+    }
+    .align {
+        font-size: 55px;
+    }
+    .img {
+        width: 20%;
+        height: 20%;
+    }
+    .logo1 {
+        margin-top: 40%;
+    }
+
+}
