@@ -6,3 +6,103 @@
     border-color: white;
     border-width: 3px;
 }
+/* ///////////////////////////////////////////////////////////////////////////////////////////////////// */
+html,
+body,
+h1,
+p {
+    margin: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 800px;;
+    font-family: 'Roboto', sans-serif;
+}
+
+.allMessages {
+    flex: 1;
+    margin-top: 15px;
+    width: 90%;
+    overflow-y: scroll;
+    overflow-wrap: break-word;
+    box-sizing: border-box;
+    display: grid;
+    grid-auto-rows: min-content;
+    grid-gap: 5px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 5px;
+    padding-left: 10px;
+    padding-top: 10px;
+    font-size: 20px;
+    font-family: 'Roboto', sans-serif;
+}
+
+.allMessages>p {
+    text-indent: -2em;
+    margin-left: 2em;
+}
+
+.userContainer {
+    margin: 20px 0 40px 0;
+    width: 90%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 5px;
+}
+
+label {
+    font-size: 20px;
+    font-family: 'Roboto', sans-serif;
+}
+
+input {
+    background: none;
+    font-size: 20px;
+    font-family: 'Roboto', sans-serif;
+    border-right: none;
+    border-left: none;
+    border-top: none;
+    border-bottom-style: solid;
+    border-bottom-color: rgb(77, 205, 181);
+    padding-bottom: 0px;
+}
+
+input:focus {
+    outline: none;
+}
+form,
+.inputContainer,
+.singleInput {
+    display: grid;
+}
+
+form {
+    grid-template: auto/1fr auto;
+}
+
+.inputContainer {
+    grid-template: auto auto/auto;
+}
+
+.singleInput {
+    grid-template: auto/auto 1fr;
+    padding-top: 10px;
+    padding-left: 10px;
+    padding-bottom: 10px;
+    padding-right: 10px;
+
+}
+
+#submitButton {
+    text-decoration: none;
+    border: none;
+    background: rgb(77, 205, 181);
+    color: white;
+    width: 70px;
+    font-size: 60px;
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+    border-radius: 0px 3px 3px 0px;
+}

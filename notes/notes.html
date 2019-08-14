@@ -6,8 +6,25 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Time Align</title>
     <link href="https://fonts.googleapis.com/css?family=Nunito&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="notes.css">
     <link rel="stylesheet" type="text/css" href="../task/navbg.css">
+    <script src="https://www.gstatic.com/firebasejs/6.3.5/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.3.5/firebase-database.js"></script>
+    <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyA0SH5_A82k0F-IOW59Uaw-yxynFHzrmdg",
+            authDomain: "time-align.firebaseapp.com",
+            databaseURL: "https://time-align.firebaseio.com",
+            projectId: "time-align",
+            storageBucket: "time-align.appspot.com",
+            messagingSenderId: "707076326726",
+            appId: "1:707076326726:web:85358a2a391010a0"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+    </script>
     <script src="notes.js" defer></script>
 </head>
 <body>
@@ -15,10 +32,29 @@
         <img class = "logo" src="../lib/logo1.png">
         <div class="li2">
             <li class="under1"><a href="../task/task.html">Today</a></li>
-            <li class="under2"><a href="../week/week.html">Week</a></li>
+            <!-- <li class="under2"><a href="../week/week.html">Week</a></li> -->
             <li class="under3"><a href="../stat/stat.html"> Summary</a></li>
             <li class="under4"><a href="notes.html">Notes</a></li>
         </div>
+    </div>
+    <div class="allMessages">
+
+    </div>
+
+    <div class="userContainer">
+        <form>
+            <div class="inputContainer">
+                <div class="singleInput">
+                    <label class=" padding" for="username">Date: </label>
+                    <input id="username" type="text">
+                </div>
+                <div class="singleInput">
+                    <label class=" padding" for="message">Note: </label>
+                    <input id="message" type="text">
+                </div>
+            </div>
+            <button id="submitButton">+</button>
+        </form>
     </div>
 </body>
 </html>

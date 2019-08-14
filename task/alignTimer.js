@@ -1,42 +1,90 @@
 class AlignTimer{
-    constructor(idx, className, parent){
-        this.timer = new easytimer.Timer();
+    static db;
+
+    constructor(idx, className, parent, id){
+        AlignTimer.db = firebase.database().ref('/timers');
         this.container = document.createElement("div");
         this.container.className = className;
         this.container.id = `timer${idx}`;
-        const timerText = document.createElement('span');
-        timerText.innerText = '00:00:00';
-        this.container.appendChild(timerText)
-        let ref = this;
-        this.timer.addEventListener('secondsUpdated', function(e){
-            timerText.innerText = ref.timer.getTimeValues().toString();
-        });
-        parent.appendChild(this.container);
+        this.idx = idx;
+        this.timerText = document.createElement('span');
+        this.timerText.innerText = '00:00:00';
+        this.timerText.className = "button"
+        this.container.appendChild(this.timerText)
+        this.enabled = false;
+        this.intervalID;
 
-        const start = document.createElement('button');
-        const stop = document.createElement('button');
-        start.innerText = 'Start';
-        stop.innerText = 'Stop';
-        start.className = "timeB";
-        stop.className = "timeB";
+        this.setInitialTime();
+
+        parent.appendChild(this.container);
+        
+        const start = document.createElement('i');
+        const stop = document.createElement('i');
+        const check = document.createElement('i');
+        start.className = "fas fa-play timeB button";
+        stop.className = "fas fa-pause timeB button";
+        check.className = "fas fa-check timeB button";
         start.onclick = () => { this.start(idx) };
         stop.onclick = () => { this.pause() };
+        check.onclick = () => { this.check(event, id) };
         this.container.appendChild(start);
         this.container.appendChild(stop);
+        this.container.appendChild(check);
+
     }
 
-    start(idx){
-        this.timer.start();
-        const database = firebase.database().ref(`/timers/timer${idx}`);
-        const startDate = new Date();
-        console.log(startDate);
-        console.log(database);
-        database.set({
-            'date' : startDate
+    start(){
+        AlignTimer.db.child(`/timer${this.idx}`).update({
+            'startTime': Date.now()
         });
+        this.intervalID = setInterval(async (e) => {
+            this.timerText.innerText = this.formatTime(await this.getTimeElapsed());
+        }, 1000);
+    }
+
+    async getTimeElapsed(){
+        const values = await AlignTimer.db.child(`/timer${this.idx}`).once('value');
+        let time = Date.now() - values.val().startTime;
+        if(values.val().storedTime){
+            time += values.val().storedTime;
+        }
+        console.log(time);
+        return time;
+    }
+
+    async setInitialTime(){
+        const values = await AlignTimer.db.child(`/timer${this.idx}`).once('value');
+        let time = 0;
+        if(values.val().storedTime){
+            time += values.val().storedTime;
+        }
+        this.timerText.innerText = this.formatTime(time);
+    }
+
+    formatTime(millis){
+        const time = new Date(millis);
+        const addZero = (t) => `${t}`.length === 1 ? `0${t}` : `${t}`
+        const hours = addZero(time.getUTCHours());
+        const minutes = addZero(time.getUTCMinutes());
+        const seconds = addZero(time.getUTCSeconds());
+        return `${hours}:${minutes}:${seconds}`
     }
  
-    pause(){
-        this.timer.pause();
+    async pause(){
+        const stored = await this.getTimeElapsed();
+        AlignTimer.db.child(`/timer${this.idx}`).update({
+            'storedTime': stored
+        });
+        if(this.intervalID){
+            clearInterval(this.intervalID);
+        }
+    }
+
+    async check(event, id){
+        let unitPath = event.path[2];
+        unitPath.remove();
+        firebase.database().ref('tasks/').child(id).update({
+            'COMPLETE': true
+        });
     }
 }

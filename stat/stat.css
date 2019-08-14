@@ -1,8 +1,9 @@
-#container{
+#container1{
     display: block;
     margin-left: auto;
     margin-right: auto;
     width: 40%; 
+    
 }
 .under3 {
     border-top: none;
@@ -11,4 +12,20 @@
     border-bottom-style: solid;
     border-color: white;
     border-width: 3px;
+}
+body{
+    text-align: center;
+}
+#button{
+    position: absolute;
+    top: 550px;
+}
+.container{
+    margin-top: 130px;
+    height: 400px;
+    width: 200px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%; 
 }

@@ -11,7 +11,7 @@ let count = 0
 let arr = []
 let contain = [];
 let timeArr = [];
-let tc = 0
+let tc = 0;
 
 inputContain.style.display = "none"
 submitTaskB.style.display = "none"
@@ -61,6 +61,7 @@ function updateDB(event) {
         TASK: task,
         TIME: time,
         DAY: day,
+        COMPLETE: false,
         STARTSTOP: [1, 2, 3]
     }
 
@@ -77,38 +78,43 @@ let taskContain = document.querySelector(".taskContain")
 
 function addTask(data) {
     const unit = data.val();
-    const task = unit.TASK;
-    const time = unit.TIME;
-    const day = unit.DAY;
+    console.log(unit);
+    if (unit.COMPLETE === false){
+        const task = unit.TASK;
+        const time = unit.TIME;
+        const day = unit.DAY;
 
-    let tempNewUnit = document.createElement("div");
-    let tempNewTask = document.createElement("p");
-    let tempNewTime = document.createElement("p");
-    let tempNewDay = document.createElement("p");
-    let tempEditButton = document.createElement("button");
+        let tempNewUnit = document.createElement("div");
+        let tempNewTask = document.createElement("p");
+        let tempNewTime = document.createElement("p");
+        let tempNewDay = document.createElement("p");
+        let tempEditButton = document.createElement("button");
 
-    tempNewTask.innerText = task;
-    tempNewTime.innerText = time;
-    tempNewDay.innerText = day;
-    tempEditButton.innerText = "Edit";
+        tempNewTask.innerText = task;
+        tempNewTime.innerText = time;
+        tempNewDay.innerText = day;
+        tempEditButton.innerText = "Edit";
 
-    tempNewUnit.appendChild(tempNewTask);
-    taskContain.prepend(tempNewUnit);
-    tempNewUnit.appendChild(tempNewTime);
-    tempNewUnit.appendChild(tempNewDay);
-    const timer1 = new AlignTimer(tc, 'test', tempNewUnit);
-    tempNewUnit.appendChild(tempEditButton);
+        tempNewUnit.appendChild(tempNewTask);
+        taskContain.prepend(tempNewUnit);
+        tempNewUnit.appendChild(tempNewTime);
+        tempNewUnit.appendChild(tempNewDay);
+        console.log(data.key);
+        const timer1 = new AlignTimer(tc, 'test', tempNewUnit, data.key);
+        tc++;
+        tempNewUnit.appendChild(tempEditButton);
 
-    tempNewUnit.className = "newUnit";
-    tempNewTask.className = "newTask new";
-    tempNewTime.className = "newTime new";
-    tempNewDay.className = "newDay new";
-    tempEditButton.className = "editTask new";
+        tempNewUnit.className = "newUnit";
+        tempNewTask.className = "newTask new";
+        tempNewTime.className = "newTime new";
+        tempNewDay.className = "newDay new";
+        tempEditButton.className = "editTask new button";
 
-    const editButton = document.getElementsByClassName("editTask");
-    editButton[0 ].addEventListener("click", function (event) {
-        changeTask(event, data);
-    });
+        const editButton = document.getElementsByClassName("editTask");
+        editButton[0].addEventListener("click", function (event) {
+            changeTask(event, data);
+        });
+    }
 }
 
 function changeTask(event, data) {
