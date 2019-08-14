@@ -14,8 +14,8 @@ let dataArr = [
 let backgroundColorArr = ['rgb(220, 20, 20)', 'rgb(0, 20, 255)', 'rgb(255,255,102)',"rgb(128,128,128)","rgb(25, 100, 126)"];
 let borderColorArr = ['rgb(0, 0, 0)', 'rgb(0, 0, 0)', 'rgb(0, 0, 0)','rgb(0, 0, 0)','rgb(0, 0, 0)'];
 
-function chart() {
-    event.preventDefault();
+function chart(event) {
+    // event.preventDefault();
     if (totalTime > 0) {
         let delContain = document.querySelector(".container");
         delContain.remove();
@@ -43,6 +43,30 @@ function chart() {
                 backgroundColor: backgroundColorArr[totalTime % 5],
                 borderColor: borderColorArr[totalTime % 5],
             }]
+        },
+        options:{
+            scales: {
+                xAxes:[{
+                    gridLines: {
+                        display: true,
+                        // color: "rgb(0,0,0)"
+                    },
+                    ticks: {
+                        fontColor: "#000000",
+                        fontSize: 15
+                    }
+                }],
+                yAxes:[{
+                    gridLines: {
+                        display: true
+                    },
+                    ticks: {
+                        fontColor: "#000000",
+                        fontSize: 15,
+                        max: 6
+                    }
+                }]
+            }
         }
     })
 
@@ -80,5 +104,28 @@ let mainTask = new Chart(myChart2, {
             backgroundColor: "rgb(25, 100, 126)"
         }]
     },
-    options: {}
+    options:{
+        scales: {
+            xAxes:[{
+                gridLines: {
+                    display: true,
+                    // color: "rgb(0,0,0)"
+                },
+                ticks: {
+                    fontColor: "#000000",
+                    fontSize: 15
+                }
+            }],
+            yAxes:[{
+                gridLines: {
+                    display: true
+                },
+                ticks: {
+                    fontColor: "#000000",
+                    fontSize: 15,
+                    max: 6
+                }
+            }]
+        }
+    }
 });
