@@ -1,12 +1,15 @@
-.list{
+/* .list{
     font-size: 20px;
     background-color: rgb(77, 205, 181);
     text-decoration: none; 
     word-spacing: 10px;
- }
+    margin: 0;
+    height: 40px;
+ } */
  li{
     display: inline; 
     align-items: center;
+    font-size: 20px;
  }
  a{
     color: white;
@@ -15,19 +18,28 @@
  img{
      width: 30px;
      height: 30px;
-     text-align: left;
-     /* position: absolute; */
+     /* text-align: left; */
+     margin-right: 1%;
+     margin-left: 1%
  }
  .navbg {
      width: 100%;
-     margin: 0;
      font-family: 'Nunito', sans-serif;
+     font-size: 20px;
+     background-color: rgb(77, 205, 181);
+     text-decoration: none; 
+     word-spacing: 10px;
+     margin: 0;
+     display: flex;
+     align-items: center;
+     padding-top: 5px;
+     padding-bottom: 5px;
  }
 
  body {
         margin: 0;
     }
- ul {
-        margin: 0;
-        height: 40px;
-    }
+ /* ul img {
+    display: flex;
+    align-items: center;
+ } */

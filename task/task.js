@@ -90,7 +90,7 @@ function addTask(data) {
     tempNewTask.innerText = task;
     tempNewTime.innerText = time;
     tempNewDay.innerText = day;
-    tempEditButton.innerText = "Edit Time";
+    tempEditButton.innerText = "Edit";
 
     tempNewUnit.appendChild(tempNewTask);
     taskContain.prepend(tempNewUnit);

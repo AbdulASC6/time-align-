@@ -1,6 +1,7 @@
  h1 {
-     text-align: center;
+     /* text-align: center; */
      font-size: 100px;
+     margin: 0px;
  }
  h4 {
      text-align: center;
@@ -8,20 +9,20 @@
      color: #19647E;
      margin-top: 0px;
  }
- div {
+ /* div {
     color: #55D6BE;
     text-align: center;
- }
+ } */
 
-h1 {
+/* h1 {
     display: inline;
-}
+} */
 .align {
     color: #19647E;
 }
 .img{
-    width: 10%;
-    height: 10%;
+    width: 9%;
+    height: 9%;
 }
 .start {
     background: #55D6BE;
@@ -29,11 +30,13 @@ h1 {
     font-size: 20px;
     padding-top: 5px;
     padding-bottom: 5px;
-    text-align: center;
+    /* text-align: center; */
     font-family: 'Nunito', sans-serif;
-    padding-right: 5px;
-    padding-left: 5px;
+    padding-right: 20px;
+    padding-left: 20px;
     margin-top: 0px;
+    /* display: flex;
+    justify-content: center; */
 }
 body {
     font-family: 'Nunito', sans-serif;
@@ -53,8 +56,11 @@ a {
 }
 .logo1 {
     margin-top: 30px;
-    /* display: flex;
-    align-items: center; */
+    display:flex;    
+    align-items:center;
+    color: #55D6BE;
+    justify-content: center;
+    margin-bottom: 1%;
 }
 .start:hover{
     border-style: solid;
