@@ -100,7 +100,7 @@ function addTask(data) {
         tempNewUnit.appendChild(tempNewTime);
         tempNewUnit.appendChild(tempNewDay);
         console.log(data.key);
-        const timer1 = new AlignTimer(tc, 'test', tempNewUnit, data.key);
+        const timer1 = new AlignTimer(tc, 'test', tempNewUnit, data.key, time);
         tc++;
         tempNewUnit.appendChild(tempEditButton);
 
