@@ -3,7 +3,6 @@
     margin-left: auto;
     margin-right: auto;
     width: 40%; 
-    
 }
 .under3 {
     border-top: none;
@@ -17,8 +16,15 @@ body{
     text-align: center;
 }
 #button{
-    position: absolute;
-    top: 550px;
+    margin-top: 120px;
+    text-decoration: none;
+    background: rgb(77, 205, 181);
+    border-radius: 5px;
+    border: none;
+    font-size: 30px;
+    font-family: 'Roboto', sans-serif;
+    padding: 5px 15px 5px 15px;
+    color: white;
 }
 .container{
     margin-top: 130px;
@@ -28,4 +34,10 @@ body{
     margin-left: auto;
     margin-right: auto;
     width: 80%; 
+}
+#myChart1 {
+    margin-top: 0px;
+}
+#myChart2 {
+    margin-top: 20px;
 }

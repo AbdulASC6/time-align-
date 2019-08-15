@@ -1,19 +1,15 @@
 
 .Contain{
-    margin: 5%;
+    margin-left: 5%;
+    margin-right: 5%;
 }
 .newUnit{
     display: flex;
-    /* justify-content: center; */
     background: white;
-    /* border-radius: 25px; */
     border-radius: 5px;
     height: 50px;
     margin-bottom: 15px;
-    /* border-style: solid;
-    border-color:rgb(77, 205, 181); */
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    /* justify-content: space-between; */
     font-family: 'Roboto', sans-serif;
     align-items: center;
 }
@@ -21,16 +17,17 @@
     display: inline;
     margin-right: 1%;
     font-size: 20px;
-    color: black;
+    color: #19647E;
     padding-left: 2%;
 }
 .title {
     text-align:center;
     font-family: 'Nunito', sans-serif;
     /* color: #19647E; */
-    color: black;
+    color: #19647E;
     font-size: 50px;
     margin-bottom: 0px;
+    margin-top: 0px;
 }
 .taskButton {
     text-decoration: none;
@@ -42,13 +39,13 @@
     border-radius: 50%;
     font-size: 30px;
     text-align: center;
-    margin-left: 90%;
+    /* margin-left: 89.6%; */
 }
 .editTask {
     text-decoration: none;
     /* background:rgb(77, 205, 181); */
     background:none;
-    color: black;
+    color: #19647E;
     /* height: 100%; */
     /* width: 50px; */
     /* border-radius: 1% 50% 50% 1%; */
@@ -62,20 +59,20 @@
     font-family: 'Roboto', sans-serif;
     border-left-style: solid;
     border-color: rgba(128,128,128,.5);
-    padding-left: 5px;
+    padding-left: 7px;
 }
 .test {
     text-decoration: none;
     /* background-color: rgb(77, 205, 181); */
     /* height: 100%; */
     font-size: 20px;
-    color: black;
+    color: #19647E;
     font-family: 'Roboto', sans-serif;
     border-left-style: solid;
     border-color: rgba(128,128,128,.5);
     border-left-style: solid;
     border-color: rgba(128,128,128,.5);
-    padding-left: 5px;
+    padding-left: 7px;
     /* align-items: center; */
 }
 .startButton {
@@ -88,12 +85,12 @@
     border: none;
     background: none;
     font-size: 20px;
-    color: black;
+    color: #19647E;
     border-left-style: solid;
     border-color: rgba(128,128,128,.5);
-    padding-left: 5px;
+    padding-left: 7px;
     height: 100%;
-    padding-right: 5px;
+    padding-right: 7px;
 }
 .under1 {
     border-top: none;
@@ -111,14 +108,103 @@ span {
     flex-grow: 1;
 }
 form {
-    display: flex;
-    align-items: center;
     background: none;
     border-radius: 5px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     font-size: 20px;
     font-family: 'Roboto', sans-serif;
+    color: #19647E;
 }
-.taskInput {
+#submitButton {
+    text-decoration: none;
+    border: none;
+    background: rgb(77, 205, 181);
+    color: white;
+    font-size: 20px;
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+    border-radius: 0px 3px 3px 0px;
+}
+form {
+    grid-template: auto/1fr auto;
+}
+.singleInput {
+    grid-template: auto/auto 1fr;
     padding-top: 10px;
+    padding-left: 10px;
+    padding-bottom: 10px;
+    padding-right: 10px;
+}
+.inputContainer {
+    grid-template: auto auto/auto;
+}
+form,
+.inputContainer,
+.singleInput {
+    display: grid;
+}
+input {
+    background: none;
+    border-right: none;
+    border-left: none;
+    border-top: none;
+    border-bottom-style: solid;
+    border-bottom-color: rgb(77, 205, 181);
+    font-size: 20px;
+    font-family: 'Roboto', sans-serif;
+    color: #19647E;
+}
+input[type="date" i] {
+    padding: 0px;
+    padding-inline-start: 3px;
+}
+form {
+    grid-template: auto/1fr auto;
+}
+button {
+    padding-right: 10px;
+    padding-left: 10px;
+}
+#task {
+    margin-left: 5px;
+    font-size: 20px;
+    font-family: 'Roboto', sans-serif;
+    color: #19647E;
+}
+#time {
+    margin-left: 5px;
+    font-size: 20px;
+    font-family: 'Roboto', sans-serif;
+    color: #19647E;
+}
+#day {
+    margin-left: 5px;
+    padding: none;
+    font-size: 20px;
+    font-family: 'Roboto', sans-serif;
+    color: #19647E;
+}
+.align {
+    display: flex;
+    background: white;
+    /* border-radius: 5px; */
+    margin-bottom: 40px;
+    /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
+    align-items: center;
+    margin-right: 5%;
+    margin-left: 5%;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 50px;
+}
+.taskButton2 {
+    text-decoration: none;
+    border: none;
+    background: white;
+    color: white;
+    height: 45px;
+    width: 45px;
+    border-radius: 50%;
+    font-size: 30px;
+    text-align: center;
 }

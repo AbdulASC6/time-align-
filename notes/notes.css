@@ -106,3 +106,9 @@ form {
     font-family: 'Roboto', sans-serif;
     border-radius: 0px 3px 3px 0px;
 }
+#message {
+    margin-left: 5px;
+}
+#username {
+    margin-left: 5px;
+}
