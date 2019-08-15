@@ -50,7 +50,20 @@ function subTaskMenu(event) {
 function updateDB(event) {
     event.preventDefault();
     const task = taskE.value;
-    const time = timeE.value;
+    let time;
+    if (timeE.value == "2 hours") {
+        time = "2:00:00";
+    } else if (timeE.value == "1 hour") {
+        time = "1:00:00";
+    } else if (timeE.value == "30 sec" || timeE.value == "thirty sec") {
+        time = "0:00:30";
+    } else if (timeE.value == "10 sec" || timeE.value == "ten sec") {
+        time = "0:00:10";
+    } else if (timeE.value == "3 sec" || timeE.value == "three sec") {
+        time = "0:00:03";
+    } else {
+        time = timeE.value;
+    }
     const day = dayE.value;
     let postTime = new Date();
     taskE.value = "";
@@ -79,7 +92,7 @@ let taskContain = document.querySelector(".taskContain")
 function addTask(data) {
     const unit = data.val();
     console.log(unit);
-    if (unit.COMPLETE === false){
+    if (unit.COMPLETE === false) {
         const task = unit.TASK;
         const time = unit.TIME;
         const day = unit.DAY;
@@ -112,21 +125,36 @@ function addTask(data) {
 
         const editButton = document.getElementsByClassName("editTask");
         editButton[0].addEventListener("click", function (event) {
-            changeTask(event, data);
+            nextEl = event.path[1].nextSibling
+            if (nextEl.classList == undefined || !nextEl.classList.contains('dot3')) {
+                changeTask(event, data);
+            }
         });
     }
 }
 
 function changeTask(event, data) {
-    console.log(event);
     unitPath = event.path[1];
+    let task = unitPath.querySelector(".newTask");
+    let time = unitPath.querySelector(".newTime");
+    let day = unitPath.querySelector(".newDay");
+
     let editInputContain = document.createElement("div");
     let editTaskInput = document.createElement("input");
     let editTimeInput = document.createElement("input");
     let editDayInput = document.createElement("input");
-    editDayInput.setAttribute("type","date"); 
+    editDayInput.setAttribute("type", "date");
+
     let submitEdit = document.createElement("button");
     let deleteEdit = document.createElement("button");
+
+    editTaskInput.placeholder = task.innerText;
+    editTimeInput.placeholder = time.innerText;
+    editDayInput.placeholder = day.innerText;
+
+    editTaskInput.className = "editIn";
+    editTimeInput.className = "editIn";
+    editDayInput.className = "editIn";
 
     editInputContain.className = "dot3"
     submitEdit.className = "submitEdit"
@@ -136,34 +164,29 @@ function changeTask(event, data) {
     deleteEdit.innerText = "X";
 
     editInputContain.appendChild(editTaskInput);
-
     editInputContain.appendChild(editTimeInput);
-
     editInputContain.appendChild(editDayInput);
+    editInputContain.appendChild(submitEdit);
+    editInputContain.appendChild(deleteEdit);
 
-    unitPath.appendChild(editInputContain);
-    unitPath.appendChild(submitEdit);
-    unitPath.appendChild(deleteEdit);
+    unitPath.parentNode.insertBefore(editInputContain, unitPath.nextSibling);
 
     submitEdit.addEventListener("click", function (event) {
+        event.preventDefault();
         changeDB(data, {
             TASK: editTaskInput.value,
             TIME: editTimeInput.value,
             DAY: editDayInput.value
         });
     });
-    console.log("true")
     deleteEdit.addEventListener("click", subEdit);
 }
 
-function subEdit() {
-    unitPath = event.path[1];
+function subEdit(event) {
+    event.preventDefault();
+    unitPath = event.path[1].parentNode;
     let editInputContain = unitPath.querySelector(".dot3");
-    let submitEdit = unitPath.querySelector(".submitEdit");
-    let deleteEdit = unitPath.querySelector(".deleteEdit");
     editInputContain.remove();
-    submitEdit.remove();
-    deleteEdit.remove();
 }
 
 function changeDB(data, obj) {

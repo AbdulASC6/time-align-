@@ -10,7 +10,7 @@ class AlignTimer{
         this.idx = idx;
         this.timerText = document.createElement('span');
         this.timerText.innerText = '00:00:00';
-        this.timerText.className = "button"
+        this.timerText.className = "button timerText"
         this.container.appendChild(this.timerText)
         this.enabled = false;
         this.intervalID;
@@ -80,6 +80,7 @@ class AlignTimer{
         AlignTimer.db.child(`/timer${this.idx}`).update({
             'storedTime': stored
         });
+        console.log(this.intervalID);
         if(this.intervalID){
             clearInterval(this.intervalID);
         }
@@ -88,8 +89,7 @@ class AlignTimer{
     async check(event, id){
         let unitPath = event.path[2];
         unitPath.remove();
-        firebase.database().ref('tasks/').child(id).update({
-            'COMPLETE': true
-        });
+        firebase.database().ref('tasks/').child(id).remove();
+        AlignTimer.db.child(`/timer${this.idx}`).remove();
     }
 }

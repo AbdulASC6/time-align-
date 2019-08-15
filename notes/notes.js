@@ -3,7 +3,7 @@ const messageElement = document.getElementById("message");
 const button = document.getElementById("submitButton");
 button.addEventListener("click",updateDB);
 
-const database = firebase.database().ref();
+const database = firebase.database().ref('notes');
 
 function updateDB(event){
     event.preventDefault();

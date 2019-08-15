@@ -2,6 +2,7 @@
 .Contain{
     margin-left: 5%;
     margin-right: 5%;
+    margin-bottom: 2%;
 }
 .newUnit{
     display: flex;
@@ -196,6 +197,7 @@ button {
     justify-content: space-between;
     align-items: center;
     margin-top: 50px;
+    margin-bottom: 5%
 }
 .taskButton2 {
     text-decoration: none;
@@ -208,3 +210,48 @@ button {
     font-size: 30px;
     text-align: center;
 }
+.timerText{
+    color: green
+}
+.submitEdit {
+    text-decoration: none;
+    border: none;
+    background: rgb(77, 205, 181);
+    color: white;
+    font-size: 20px;
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+    border-radius: 0px 0px 0px 0px;
+}
+.deleteEdit {
+    text-decoration: none;
+    border: none;
+    background: rgb(77, 205, 181);
+    color: white;
+    font-size: 20px;
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+    border-radius: 0px 0px 0px 0px;
+}
+
+form,
+.div3,
+.editIn {
+    display: grid;
+}
+.editIn {
+    grid-template: auto/auto 1fr;
+    padding-top: 10px;
+    padding-left: 10px;
+    padding-bottom: 10px;
+    padding-right: 10px;
+}
+.div3 {
+    grid-template: auto auto/auto;
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-bottom: 2%;
+    border-style: solid;
+    border-color: black;
+    width: 100%;
+} 
