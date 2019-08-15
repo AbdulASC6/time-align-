@@ -1,7 +1,8 @@
 class AlignTimer{
     static db;
 
-    constructor(idx, className, parent, id){
+    constructor(idx, className, parent, id, time){
+        this.maxTime = time;
         AlignTimer.db = firebase.database().ref('/timers');
         this.container = document.createElement("div");
         this.container.className = className;
@@ -39,6 +40,10 @@ class AlignTimer{
         });
         this.intervalID = setInterval(async (e) => {
             this.timerText.innerText = this.formatTime(await this.getTimeElapsed());
+            if(Date.parse('01/01/2019 ' + this.timerText.innerText) > Date.parse('01/01/2019 ' + this.maxTime)){
+                console.log(this.timerText.style.color);
+                this.timerText.style.color = "red";
+            }
         }, 1000);
     }
 

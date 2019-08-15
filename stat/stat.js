@@ -60,10 +60,16 @@ function chart(event) {
                     gridLines: {
                         display: true
                     },
+                    scaleLabel: {
+                        display: true,
+                        labelString: 'hours',
+                        fontSize: 20
+
+                    },
                     ticks: {
                         fontColor: "#000000",
                         fontSize: 15,
-                        max: 6
+                        max: 5
                     }
                 }]
             }
