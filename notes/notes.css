@@ -67,6 +67,7 @@ input {
     border-bottom-style: solid;
     border-bottom-color: rgb(77, 205, 181);
     padding-bottom: 0px;
+    color: #19647E;
 }
 
 input:focus {
@@ -80,6 +81,7 @@ form,
 
 form {
     grid-template: auto/1fr auto;
+    color: #19647E;
 }
 
 .inputContainer {
@@ -111,4 +113,9 @@ form {
 }
 #username {
     margin-left: 5px;
+}
+p {
+    font-size: 20px;
+    font-family: 'Roboto', sans-serif;
+    color: #19647E;
 }
